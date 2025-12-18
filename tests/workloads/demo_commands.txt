@@ -1,0 +1,37 @@
+# Memory Simulator Demo Commands
+# This file demonstrates the CLI interface
+
+# Initialize memory with 1024 bytes
+init memory 1024
+
+# Set allocator to First Fit
+set allocator first_fit
+
+# Allocate some blocks
+malloc 100
+malloc 200
+malloc 150
+
+# Display memory layout
+dump memory
+
+# Free a block
+free 2
+
+# Allocate again (should reuse freed space with First Fit)
+malloc 180
+
+# Display updated memory layout
+dump memory
+
+# Show statistics
+stats
+
+# Try Best Fit strategy
+set allocator best_fit
+malloc 50
+dump memory
+stats
+
+# Exit
+exit

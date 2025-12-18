@@ -83,18 +83,57 @@ memory-simulator/
 
 ## Usage
 
-(Coming in Phase 3 - CLI Implementation)
+The simulator provides an interactive command-line interface:
 
-Example commands:
+```bash
+./memsim
+```
+
+### Example Session
+
 ```
 > init memory 1024
+Memory initialized: 1024 bytes
+
 > set allocator first_fit
+Allocator set to: First Fit
+
 > malloc 100
 Allocated block id=1 at address=0x0000
-> free 1
+
+> malloc 200
+Allocated block id=2 at address=0x0000
+
 > dump memory
+=== Memory Layout (1024 bytes) ===
+[0x0000 - 0x0063] USED (id=1, 100 bytes)
+[0x0064 - 0x012b] USED (id=2, 200 bytes)
+[0x012c - 0x03ff] FREE (724 bytes)
+
+> free 1
+Block 1 freed
+
 > stats
+=== Allocator Statistics ===
+Strategy: First Fit
+Total memory: 1024 bytes
+Used memory: 200 bytes
+Free memory: 824 bytes
+Utilization: 19.53%
+...
 ```
+
+### Available Commands
+
+- **`init memory <size>`** - Initialize physical memory
+- **`set allocator <type>`** - Set allocation strategy (first_fit, best_fit, worst_fit)
+- **`malloc <size>`** - Allocate memory block
+- **`free <block_id>`** - Free block by ID
+- **`free_addr <address>`** - Free block by address
+- **`dump memory`** - Display memory layout
+- **`stats`** - Show detailed statistics
+- **`help`** - Display help
+- **`exit`** - Exit simulator
 
 ## Development Status
 
@@ -115,11 +154,13 @@ Allocated block id=1 at address=0x0000
 - [x] Comprehensive unit tests (27 tests)
 - [x] All three allocation strategies tested
 
-### Phase 3: CLI and Basic Demo
-- [ ] Command parser
-- [ ] CLI interface
-- [ ] Memory manager
-- [ ] ASCII visualization
+### Phase 3: CLI and Basic Demo ✓ COMPLETE
+- [x] Command parser with full command set
+- [x] CLI interface with REPL loop
+- [x] Memory manager orchestrator
+- [x] ASCII visualization of memory layout
+- [x] Interactive help system
+- [x] Error handling and user feedback
 
 ### Phase 4: Buddy Allocator
 - [ ] Buddy allocation system
