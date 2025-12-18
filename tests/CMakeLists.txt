@@ -12,6 +12,7 @@ FetchContent_MakeAvailable(googletest)
 # Unit tests
 add_executable(unit_tests
     unit/test_physical_memory.cpp
+    unit/test_standard_allocator.cpp
 )
 
 target_link_libraries(unit_tests
