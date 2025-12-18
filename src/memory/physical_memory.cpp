@@ -48,4 +48,19 @@ bool PhysicalMemory::isValidRange(Address addr, size_t size) const {
     return (addr + size) <= total_size_;
 }
 
+Result<void> PhysicalMemory::write(Address addr, uint8_t data) {
+    if (addr >= total_size_) {
+        return Result<void>::Err("Address out of bounds");
+    }
+    memory_[addr] = data;
+    return Result<void>::Ok();
+}
+
+Result<uint8_t> PhysicalMemory::read(Address addr) const {
+    if (addr >= total_size_) {
+        return Result<uint8_t>::Err("Address out of bounds");
+    }
+    return Result<uint8_t>::Ok(memory_[addr]);
+}
+
 } // namespace memsim

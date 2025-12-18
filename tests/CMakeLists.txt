@@ -14,6 +14,7 @@ add_executable(unit_tests
     unit/test_physical_memory.cpp
     unit/test_standard_allocator.cpp
     unit/test_buddy_allocator.cpp
+    unit/test_cache_level.cpp
 )
 
 target_link_libraries(unit_tests
@@ -21,14 +22,15 @@ target_link_libraries(unit_tests
     gtest_main
 )
 
-# Integration tests (will be added later)
-# add_executable(integration_tests
-#     integration/test_full_system.cpp
-# )
-# target_link_libraries(integration_tests
-#     memsim_lib
-#     gtest_main
-# )
+# Integration tests
+add_executable(integration_tests
+    integration/test_cache_integration.cpp
+)
+target_link_libraries(integration_tests
+    memsim_lib
+    gtest_main
+)
 
 include(GoogleTest)
 gtest_discover_tests(unit_tests)
+gtest_discover_tests(integration_tests)

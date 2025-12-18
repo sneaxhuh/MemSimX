@@ -4,6 +4,7 @@
 #include <vector>
 #include <cstddef>
 #include "common/types.h"
+#include "common/result.h"
 
 namespace memsim {
 
@@ -49,6 +50,21 @@ public:
      * @return true if read was successful, false if out of bounds
      */
     bool read(Address addr, void* buffer, size_t size) const;
+
+    /**
+     * @brief Write single byte to physical memory (convenience method for cache)
+     * @param addr Address to write to
+     * @param data Byte value to write
+     * @return Result indicating success or error
+     */
+    Result<void> write(Address addr, uint8_t data);
+
+    /**
+     * @brief Read single byte from physical memory (convenience method for cache)
+     * @param addr Address to read from
+     * @return Result containing byte value, or error
+     */
+    Result<uint8_t> read(Address addr) const;
 
     /**
      * @brief Get total size of physical memory
