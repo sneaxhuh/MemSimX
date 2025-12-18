@@ -15,6 +15,7 @@ add_executable(unit_tests
     unit/test_standard_allocator.cpp
     unit/test_buddy_allocator.cpp
     unit/test_cache_level.cpp
+    unit/test_virtual_memory.cpp
 )
 
 target_link_libraries(unit_tests
