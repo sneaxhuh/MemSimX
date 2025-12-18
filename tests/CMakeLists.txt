@@ -13,6 +13,7 @@ FetchContent_MakeAvailable(googletest)
 add_executable(unit_tests
     unit/test_physical_memory.cpp
     unit/test_standard_allocator.cpp
+    unit/test_buddy_allocator.cpp
 )
 
 target_link_libraries(unit_tests

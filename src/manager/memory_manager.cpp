@@ -40,16 +40,26 @@ Result<void> MemoryManager::setAllocator(AllocatorType type) {
 
     try {
         current_allocator_type_ = type;
-        allocator_ = std::make_unique<StandardAllocator>(
-            physical_memory_.get(),
-            type
-        );
+
+        // Create appropriate allocator based on type
+        if (type == AllocatorType::BUDDY) {
+            allocator_ = std::make_unique<BuddyAllocator>(
+                physical_memory_.get(),
+                32  // min block size
+            );
+        } else {
+            allocator_ = std::make_unique<StandardAllocator>(
+                physical_memory_.get(),
+                type
+            );
+        }
 
         std::string type_name;
         switch (type) {
             case AllocatorType::FIRST_FIT: type_name = "First Fit"; break;
             case AllocatorType::BEST_FIT: type_name = "Best Fit"; break;
             case AllocatorType::WORST_FIT: type_name = "Worst Fit"; break;
+            case AllocatorType::BUDDY: type_name = "Buddy Allocation"; break;
             default: type_name = "Unknown"; break;
         }
 

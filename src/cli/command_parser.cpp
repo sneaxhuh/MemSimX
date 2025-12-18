@@ -72,7 +72,7 @@ void CommandParser::printHelp() {
     std::cout << "                                 Example: init memory 1024" << std::endl;
     std::cout << "\nAllocator Configuration:" << std::endl;
     std::cout << "  set allocator <type>        - Set allocation strategy" << std::endl;
-    std::cout << "                                 Types: first_fit, best_fit, worst_fit" << std::endl;
+    std::cout << "                                 Types: first_fit, best_fit, worst_fit, buddy" << std::endl;
     std::cout << "                                 Example: set allocator first_fit" << std::endl;
     std::cout << "\nMemory Operations:" << std::endl;
     std::cout << "  malloc <size>               - Allocate memory block of specified size" << std::endl;

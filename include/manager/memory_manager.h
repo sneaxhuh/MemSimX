@@ -4,6 +4,7 @@
 #include "memory/physical_memory.h"
 #include "allocator/allocator_interface.h"
 #include "allocator/standard_allocator.h"
+#include "allocator/buddy_allocator.h"
 #include "common/types.h"
 #include "common/result.h"
 #include <memory>

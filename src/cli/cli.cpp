@@ -192,8 +192,10 @@ Result<AllocatorType> CLI::parseAllocatorType(const std::string& type_str) {
         return Result<AllocatorType>::Ok(AllocatorType::BEST_FIT);
     } else if (lower == "worst_fit") {
         return Result<AllocatorType>::Ok(AllocatorType::WORST_FIT);
+    } else if (lower == "buddy") {
+        return Result<AllocatorType>::Ok(AllocatorType::BUDDY);
     } else {
-        return Result<AllocatorType>::Err("Invalid allocator type. Valid types: first_fit, best_fit, worst_fit");
+        return Result<AllocatorType>::Err("Invalid allocator type. Valid types: first_fit, best_fit, worst_fit, buddy");
     }
 }
 

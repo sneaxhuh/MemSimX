@@ -126,7 +126,7 @@ Utilization: 19.53%
 ### Available Commands
 
 - **`init memory <size>`** - Initialize physical memory
-- **`set allocator <type>`** - Set allocation strategy (first_fit, best_fit, worst_fit)
+- **`set allocator <type>`** - Set allocation strategy (first_fit, best_fit, worst_fit, buddy)
 - **`malloc <size>`** - Allocate memory block
 - **`free <block_id>`** - Free block by ID
 - **`free_addr <address>`** - Free block by address
@@ -162,11 +162,15 @@ Utilization: 19.53%
 - [x] Interactive help system
 - [x] Error handling and user feedback
 
-### Phase 4: Buddy Allocator
-- [ ] Buddy allocation system
-- [ ] Power-of-two rounding
-- [ ] Buddy coalescing
-- [ ] Unit tests
+### Phase 4: Buddy Allocator ✓ COMPLETE
+- [x] Buddy allocation system with free lists
+- [x] Power-of-two rounding logic
+- [x] Recursive block splitting
+- [x] Buddy address calculation using XOR
+- [x] Recursive buddy coalescing
+- [x] Memory size validation (must be power of 2)
+- [x] Comprehensive unit tests (27 tests)
+- [x] CLI integration with 'buddy' allocator type
 
 ### Phase 5: Cache Hierarchy
 - [ ] Cache line and level implementation
