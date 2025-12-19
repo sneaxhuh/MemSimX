@@ -26,6 +26,7 @@ target_link_libraries(unit_tests
 # Integration tests
 add_executable(integration_tests
     integration/test_cache_integration.cpp
+    integration/test_full_system.cpp
 )
 target_link_libraries(integration_tests
     memsim_lib
