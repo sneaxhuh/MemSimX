@@ -17,6 +17,18 @@ enum class CommandType {
     FREE_ADDR,          // free_addr <address>
     DUMP_MEMORY,        // dump memory
     STATS,              // stats
+    INIT_CACHE,         // init cache <l1_sets> <l1_assoc> <l1_block> <l1_policy> <l2_sets> <l2_assoc> <l2_block> <l2_policy>
+    CACHE_READ,         // cache read <address>
+    CACHE_WRITE,        // cache write <address> <value>
+    CACHE_STATS,        // cache stats
+    CACHE_DUMP,         // cache dump
+    CACHE_FLUSH,        // cache flush
+    INIT_VM,            // init vm <num_virtual_pages> <num_physical_frames> <page_size> <policy>
+    VM_READ,            // vm read <virtual_address>
+    VM_WRITE,           // vm write <virtual_address> <value>
+    VM_TRANSLATE,       // vm translate <virtual_address>
+    VM_STATS,           // vm stats
+    VM_DUMP,            // vm dump
     HELP,               // help
     EXIT,               // exit
     UNKNOWN             // Unrecognized command

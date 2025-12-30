@@ -71,6 +71,27 @@ private:
      * @return Address value or error
      */
     Result<Address> parseAddress(const std::string& str);
+
+    /**
+     * @brief Parse PageReplacementPolicy from string
+     * @param policy_str Policy string (fifo, lru, clock)
+     * @return PageReplacementPolicy or error
+     */
+    Result<PageReplacementPolicy> parsePageReplacementPolicy(const std::string& policy_str);
+
+    /**
+     * @brief Parse uint8_t from string
+     * @param str String to parse
+     * @return uint8_t value or error
+     */
+    Result<uint8_t> parseUInt8(const std::string& str);
+
+    /**
+     * @brief Parse CachePolicy from string
+     * @param policy_str Policy string (fifo, lru, lfu)
+     * @return CachePolicy or error
+     */
+    Result<CachePolicy> parseCachePolicy(const std::string& policy_str);
 };
 
 } // namespace memsim
