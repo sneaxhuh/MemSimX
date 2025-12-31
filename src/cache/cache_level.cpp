@@ -164,7 +164,7 @@ void CacheLevel::dump() const {
             }
         }
 
-        if (!has_valid) continue;  // Skip empty sets
+        if (!has_valid) continue;
 
         std::cout << "Set " << set_idx << ": ";
         for (size_t way = 0; way < associativity_; way++) {
@@ -242,7 +242,7 @@ size_t CacheLevel::selectVictim(size_t set_index) {
         }
     }
 
-    // All lines valid - use replacement policy
+    // No empty lines, use replacement policy
     switch (policy_) {
         case CachePolicy::FIFO: {
             // Find line with smallest insertion_order (oldest)
@@ -284,7 +284,7 @@ size_t CacheLevel::selectVictim(size_t set_index) {
         }
 
         default:
-            return 0;  // Fallback
+            return 0;
     }
 }
 
@@ -300,7 +300,7 @@ void CacheLevel::loadBlock(Address address, Address tag, size_t set_index, size_
         if (read_result.success) {
             line.data[i] = read_result.value;
         } else {
-            line.data[i] = 0;  // Default on error
+            line.data[i] = 0;
         }
     }
 
@@ -309,7 +309,7 @@ void CacheLevel::loadBlock(Address address, Address tag, size_t set_index, size_
     line.tag = tag;
     line.insertion_order = global_time_;
     line.last_access_time = global_time_;
-    line.access_count = 0;  // Reset on load
+    line.access_count = 1;
 }
 
 size_t CacheLevel::calculateBits(size_t value) {

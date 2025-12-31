@@ -27,7 +27,7 @@ public:
      */
     ~PhysicalMemory() = default;
 
-    // Disable copy and move operations (memory should not be copied)
+    // Non-copyable, non-movable
     PhysicalMemory(const PhysicalMemory&) = delete;
     PhysicalMemory& operator=(const PhysicalMemory&) = delete;
     PhysicalMemory(PhysicalMemory&&) = delete;
@@ -86,9 +86,7 @@ public:
 
     /**
      * @brief Update the used memory size
-     * @param size New used memory size
-     *
-     * Note: This is updated by the allocator, not by read/write operations
+     * @param size New used memory size (updated by allocator, not I/O)
      */
     void updateUsedSize(size_t size) { used_size_ = size; }
 

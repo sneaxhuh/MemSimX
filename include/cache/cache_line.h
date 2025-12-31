@@ -43,7 +43,6 @@ struct CacheLine {
         insertion_order = 0;
         last_access_time = 0;
         access_count = 0;
-        // Keep data vector allocated but don't clear
     }
 
     /**

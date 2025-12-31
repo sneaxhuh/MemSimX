@@ -73,8 +73,6 @@ Result<BlockId> StandardAllocator::allocate(size_t size) {
 }
 
 Result<void> StandardAllocator::deallocate(BlockId block_id) {
-    total_deallocations_++;
-
     // Find the block
     auto it = allocated_blocks_.find(block_id);
     if (it == allocated_blocks_.end()) {
@@ -106,6 +104,7 @@ Result<void> StandardAllocator::deallocate(BlockId block_id) {
     }
     physical_memory_->updateUsedSize(total_used);
 
+    total_deallocations_++;
     return Result<void>::Ok();
 }
 
@@ -172,8 +171,6 @@ MemoryBlock* StandardAllocator::findBlock(size_t size) {
 }
 
 void StandardAllocator::splitBlock(MemoryBlock* block, size_t size) {
-    // Only split if there's enough remaining space
-    // We need at least 1 byte for the new free block to be useful
     const size_t MIN_SPLIT_SIZE = 1;
 
     if (block->size > size + MIN_SPLIT_SIZE) {
@@ -382,6 +379,14 @@ size_t StandardAllocator::countFreeBlocks() const {
 
 size_t StandardAllocator::countAllocatedBlocks() const {
     return allocated_blocks_.size();
+}
+
+Result<Address> StandardAllocator::getBlockAddress(BlockId block_id) const {
+    auto it = allocated_blocks_.find(block_id);
+    if (it == allocated_blocks_.end()) {
+        return Result<Address>::Err("Block ID not found");
+    }
+    return Result<Address>::Ok(it->second->start_address);
 }
 
 } // namespace memsim

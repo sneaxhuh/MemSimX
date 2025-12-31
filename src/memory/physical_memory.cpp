@@ -34,17 +34,13 @@ void PhysicalMemory::clear() {
 }
 
 bool PhysicalMemory::isValidRange(Address addr, size_t size) const {
-    // Check for overflow and bounds
     if (addr >= total_size_) {
         return false;
     }
     if (size == 0) {
         return true;
     }
-    // Check if addr + size would overflow or exceed total_size_
-    if (addr + size < addr) { // Overflow check
-        return false;
-    }
+    if (addr + size < addr) return false;  // overflow
     return (addr + size) <= total_size_;
 }
 

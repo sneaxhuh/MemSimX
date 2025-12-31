@@ -246,9 +246,7 @@ Result<Address> VirtualMemory::handlePageFault(size_t page_number) {
 size_t VirtualMemory::selectVictimPage() {
     switch (policy_) {
         case PageReplacementPolicy::FIFO: {
-            // FIFO: evict oldest (front of queue)
             if (fifo_queue_.empty()) {
-                // Shouldn't happen, but fallback to first valid page
                 for (size_t i = 0; i < num_virtual_pages_; i++) {
                     if (page_table_[i].valid) return i;
                 }
@@ -293,7 +291,7 @@ size_t VirtualMemory::selectVictimPage() {
         }
 
         default:
-            return 0;  // Fallback
+            return 0;
     }
 }
 
@@ -331,10 +329,7 @@ Result<Address> VirtualMemory::findFreeFrame() {
 }
 
 void VirtualMemory::loadPageFromDisk(size_t page_number, Address frame_number) {
-    // Simulate loading page from disk
-    // In a real system, this would read from secondary storage
-    // For simulation, we'll initialize with a pattern based on page number
-
+    // Simulate disk load with deterministic pattern
     Address frame_start = frame_number * page_size_;
     for (size_t i = 0; i < page_size_; i++) {
         uint8_t value = static_cast<uint8_t>((page_number * page_size_ + i) % 256);
@@ -343,16 +338,9 @@ void VirtualMemory::loadPageFromDisk(size_t page_number, Address frame_number) {
 }
 
 void VirtualMemory::writePageToDisk(size_t page_number, Address frame_number) {
-    // Simulate writing page back to disk
-    // In a real system, this would write to secondary storage
-    // For simulation, we just acknowledge the write
-
-    (void)page_number;    // Unused in simulation
-    (void)frame_number;   // Unused in simulation
-
-    // In a real implementation, we would:
-    // 1. Read data from physical frame
-    // 2. Write to disk at position based on page_number
+    // Disk write simulation (no-op)
+    (void)page_number;
+    (void)frame_number;
 }
 
 bool VirtualMemory::isPowerOfTwo(size_t value) {
