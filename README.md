@@ -221,11 +221,3 @@ stats
 free 1
 free_addr 0x00000064
 ```
-
-## License
-
-Academic project for ACM Open Projects.
-
-## Authors
-
-Implementation based on the Memory Management Simulator specification from ACM Open Projects.

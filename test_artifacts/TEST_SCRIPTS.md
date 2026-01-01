@@ -36,7 +36,7 @@ The project includes two test suites:
 
 **Run Instructions**:
 ```bash
-cd /home/sneax/ACM_OpenProjects/memory-simulator/build
+cd build
 ctest --test-dir . -R StandardAllocator -V
 ```
 
@@ -70,7 +70,7 @@ ctest --test-dir . -R StandardAllocator -V
 
 **Run Instructions**:
 ```bash
-cd /home/sneax/ACM_OpenProjects/memory-simulator/build
+cd build
 ctest --test-dir . -R BuddyAllocator -V
 ```
 
@@ -108,7 +108,7 @@ ctest --test-dir . -R BuddyAllocator -V
 
 **Run Instructions**:
 ```bash
-cd /home/sneax/ACM_OpenProjects/memory-simulator/build
+cd build
 ctest --test-dir . -R CacheLevel -V
 ```
 
@@ -146,7 +146,7 @@ ctest --test-dir . -R CacheLevel -V
 
 **Run Instructions**:
 ```bash
-cd /home/sneax/ACM_OpenProjects/memory-simulator/build
+cd build
 ctest --test-dir . -R VirtualMemory -V
 ```
 
@@ -164,7 +164,7 @@ ctest --test-dir . -R VirtualMemory -V
 
 **Run Instructions**:
 ```bash
-cd /home/sneax/ACM_OpenProjects/memory-simulator/build
+cd build
 ctest --test-dir . -R CacheIntegration -V
 ```
 
@@ -176,7 +176,7 @@ ctest --test-dir . -R CacheIntegration -V
 
 **Run Instructions**:
 ```bash
-cd /home/sneax/ACM_OpenProjects/memory-simulator/build
+cd build
 ctest --test-dir . -R FullSystem -V
 ```
 
@@ -185,7 +185,7 @@ ctest --test-dir . -R FullSystem -V
 ## Running All Google Tests
 
 ```bash
-cd /home/sneax/ACM_OpenProjects/memory-simulator/build
+cd build
 ctest --test-dir . -V
 ```
 
@@ -214,7 +214,7 @@ ctest --test-dir . -R "integration" -V
 
 **Run Instructions**:
 ```bash
-cd /home/sneax/ACM_OpenProjects/memory-simulator/build
+cd build
 ./generate_test_logs
 ```
 
@@ -267,7 +267,7 @@ All subsystems have comprehensive test coverage using Google Test framework.
 ### Building the Project
 
 ```bash
-cd /home/sneax/ACM_OpenProjects/memory-simulator
+cd memory-simulator
 mkdir -p build
 cd build
 cmake ..
@@ -378,30 +378,3 @@ ctest --test-dir . -R NewFeature -V
 
 ---
 
-## Summary
-
-The project includes comprehensive testing at multiple levels:
-
-**Google Test Suite** (`tests/`):
-- 100+ unit tests covering all components
-- Integration tests for full system behavior
-- Automated with CTest
-- Industry-standard testing framework
-
-**Log Generator** (`scripts/generate_test_logs.cpp`):
-- Generates real execution traces
-- Produces actual logs for documentation
-- Demonstrates system behavior with real data
-
-**Test Artifacts** (`test_artifacts/`):
-- Real logs from actual execution (not examples)
-- Comprehensive test workload documentation
-- Expected outputs and correctness criteria
-
-To verify the entire system:
-```bash
-cd /home/sneax/ACM_OpenProjects/memory-simulator/build
-ctest --test-dir . -V
-```
-
-All tests passing confirms correctness of all subsystems.

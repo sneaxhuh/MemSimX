@@ -95,7 +95,7 @@ Each section includes:
 
 ### Running All Tests
 ```bash
-cd /home/sneax/ACM_OpenProjects/memory-simulator
+cd memory-simulator
 
 # Allocator
 g++ tests/test_allocator_algorithms.cpp src/physical_memory.cpp src/allocator.cpp -Iinclude -o test_allocator
