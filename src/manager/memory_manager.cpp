@@ -179,6 +179,7 @@ Result<void> MemoryManager::initVirtualMemory(size_t num_virtual_pages,
         switch (policy) {
             case PageReplacementPolicy::FIFO: policy_name = "FIFO"; break;
             case PageReplacementPolicy::LRU: policy_name = "LRU"; break;
+            case PageReplacementPolicy::CLOCK: policy_name = "Clock"; break;
             default: policy_name = "Unknown"; break;
         }
 

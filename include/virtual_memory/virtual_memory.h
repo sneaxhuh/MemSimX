@@ -37,7 +37,7 @@ struct VirtualMemoryStats {
  * @brief Virtual memory system with paging and page replacement
  *
  * Provides address translation from virtual addresses to physical addresses
- * using a page table. Implements page replacement policies (FIFO, LRU)
+ * using a page table. Implements page replacement policies (FIFO, LRU, Clock)
  * when physical memory is full.
  *
  * Virtual Address format:
@@ -137,6 +137,7 @@ private:
 
     // Page replacement data structures
     std::queue<size_t> fifo_queue_;      // For FIFO: queue of page numbers
+    size_t clock_hand_;                   // For Clock: current position
 
     // Statistics and time tracking
     VirtualMemoryStats stats_;
@@ -167,7 +168,7 @@ private:
     /**
      * @brief Select victim page for eviction
      *
-     * Uses configured page replacement policy (FIFO, LRU).
+     * Uses configured page replacement policy (FIFO, LRU, Clock).
      *
      * @return Page number to evict
      */

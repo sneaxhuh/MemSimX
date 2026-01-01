@@ -74,7 +74,7 @@ private:
 
     /**
      * @brief Parse PageReplacementPolicy from string
-     * @param policy_str Policy string (fifo, lru)
+     * @param policy_str Policy string (fifo, lru, clock)
      * @return PageReplacementPolicy or error
      */
     Result<PageReplacementPolicy> parsePageReplacementPolicy(const std::string& policy_str);

@@ -1,14 +1,12 @@
 # Test Artifacts - Updated Logs
 
-**Last Updated**: December 30, 2025, 19:32 IST
-
 All execution logs have been regenerated using the latest implementation with full CLI support for virtual memory and cache commands.
 
 ---
 
 ## Updated Files
 
-### 1. [allocation_log.txt](allocation_log.txt) - 80 lines
+### 1. [allocation_log.txt](allocation_log.txt)
 **Generated from**: First Fit allocator with allocation, deallocation, and reallocation
 
 **Demonstrates**:
@@ -28,7 +26,7 @@ All execution logs have been regenerated using the latest implementation with fu
 
 ---
 
-### 2. [cache_access_log.txt](cache_access_log.txt) - 57 lines
+### 2. [cache_access_log.txt](cache_access_log.txt)
 **Generated from**: L1/L2 cache hierarchy with LRU replacement
 
 **Demonstrates**:
@@ -50,7 +48,7 @@ All execution logs have been regenerated using the latest implementation with fu
 
 ---
 
-### 3. [vm_access_log.txt](vm_access_log.txt) - 47 lines
+### 3. [vm_access_log.txt](vm_access_log.txt)
 **Generated from**: Virtual memory with LRU page replacement
 
 **Demonstrates**:
@@ -75,7 +73,7 @@ All execution logs have been regenerated using the latest implementation with fu
 
 ---
 
-### 4. [integrated_system_log.txt](integrated_system_log.txt) - 96 lines
+### 4. [integrated_system_log.txt](integrated_system_log.txt)
 **Generated from**: Full system with Buddy allocator + Cache + Virtual Memory
 
 **Demonstrates**:
@@ -99,19 +97,11 @@ All execution logs have been regenerated using the latest implementation with fu
 
 ---
 
-## Changes from Previous Version
+## Implementation Details
 
-### Previous (Dec 29, 2025):
-- Logs were static examples or from older test runs
-- Did not use CLI commands (used C++ API directly)
-- Missing some newer features
-
-### Current (Dec 30, 2025):
-- ✅ Generated using new CLI interface
+- ✅ Generated using CLI interface
 - ✅ Uses `init memory`, `init cache`, `init vm` commands
 - ✅ Shows complete CLI-based workflow
-- ✅ Reflects current v1.0 implementation
-- ✅ Includes all latest features (VM CLI, cache CLI)
 - ✅ Real execution traces from actual simulator runs
 
 ---
@@ -170,5 +160,3 @@ These logs serve as:
 - [README.md](README.md) - Test artifacts overview
 
 ---
-
-**All logs are production-ready and reflect the current state of the Memory Management Simulator v1.0.**

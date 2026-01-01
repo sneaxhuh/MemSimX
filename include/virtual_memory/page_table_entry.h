@@ -16,7 +16,7 @@ struct PageTableEntry {
     bool valid;              // Is this page currently in physical memory?
     Address frame_number;    // Physical frame number (if valid)
     bool dirty;              // Has this page been modified?
-    bool referenced;         // Has this page been accessed?
+    bool referenced;         // Has this page been accessed? (for Clock algorithm)
 
     // Metadata for page replacement policies
     uint64_t load_time;      // When was this page loaded? (for FIFO)

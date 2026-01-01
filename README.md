@@ -135,6 +135,16 @@ Utilization: 19.53%
 - **`help`** - Display help
 - **`exit`** - Exit simulator
 
+## Project Statistics
+
+- **Source Files**: 10 implementation files
+- **Header Files**: 53 header files
+- **Test Files**: 7 test files
+- **Total Tests**: 154 (all passing)
+- **Test Coverage**: All components tested
+- **Build System**: CMake with C++17
+- **Testing Framework**: Google Test
+
 ## Testing
 
 ### Run All Tests
@@ -153,7 +163,7 @@ ctest --output-on-failure
 ```
 
 ### Test Coverage
-All 157 tests passing.
+All 154 tests passing.
 
 ## Documentation
 

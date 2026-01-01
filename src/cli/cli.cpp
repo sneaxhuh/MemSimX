@@ -245,7 +245,7 @@ void CLI::executeCommand(const Command& cmd) {
         case CommandType::INIT_VM: {
             if (cmd.args.size() < 4) {
                 std::cout << "Error: Missing arguments. Usage: init vm <num_virtual_pages> <num_physical_frames> <page_size> <policy>" << std::endl;
-                std::cout << "Policies: fifo, lru" << std::endl;
+                std::cout << "Policies: fifo, lru, clock" << std::endl;
                 break;
             }
 
@@ -463,9 +463,11 @@ Result<PageReplacementPolicy> CLI::parsePageReplacementPolicy(const std::string&
         return Result<PageReplacementPolicy>::Ok(PageReplacementPolicy::FIFO);
     } else if (lower == "lru") {
         return Result<PageReplacementPolicy>::Ok(PageReplacementPolicy::LRU);
+    } else if (lower == "clock") {
+        return Result<PageReplacementPolicy>::Ok(PageReplacementPolicy::CLOCK);
     } else {
         return Result<PageReplacementPolicy>::Err(
-            "Invalid page replacement policy: " + policy_str + " (valid: fifo, lru)"
+            "Invalid page replacement policy: " + policy_str + " (valid: fifo, lru, clock)"
         );
     }
 }

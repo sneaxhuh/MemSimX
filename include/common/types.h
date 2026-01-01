@@ -29,7 +29,8 @@ enum class CachePolicy {
 // Page replacement policies
 enum class PageReplacementPolicy {
     FIFO,   // First-In-First-Out
-    LRU     // Least Recently Used
+    LRU,    // Least Recently Used
+    CLOCK   // Clock algorithm (second chance)
 };
 
 } // namespace memsim

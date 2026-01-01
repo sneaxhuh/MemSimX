@@ -161,7 +161,7 @@ void CommandParser::printHelp() {
     std::cout << "                                 vp: number of virtual pages" << std::endl;
     std::cout << "                                 pf: number of physical frames" << std::endl;
     std::cout << "                                 ps: page size in bytes" << std::endl;
-    std::cout << "                                 policy: fifo or lru" << std::endl;
+    std::cout << "                                 policy: fifo, lru, or clock" << std::endl;
     std::cout << "                                 Example: init vm 16 4 256 lru" << std::endl;
     std::cout << "  vm read <virtual_addr>      - Read from virtual address" << std::endl;
     std::cout << "                                 Example: vm read 1024" << std::endl;
