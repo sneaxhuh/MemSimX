@@ -17,7 +17,6 @@ VirtualMemory::VirtualMemory(PhysicalMemory* memory,
       num_physical_frames_(num_physical_frames),
       page_size_(page_size),
       policy_(policy),
-      clock_hand_(0),
       global_time_(0) {
 
     // Validate parameters
@@ -122,7 +121,6 @@ void VirtualMemory::flush() {
     while (!fifo_queue_.empty()) {
         fifo_queue_.pop();
     }
-    clock_hand_ = 0;
 }
 
 std::string VirtualMemory::getStatsString() const {
@@ -161,9 +159,6 @@ void VirtualMemory::dump() const {
             case PageReplacementPolicy::LRU:
                 std::cout << ", LastAccess=" << pte.last_access;
                 break;
-            case PageReplacementPolicy::CLOCK:
-                // Referenced bit already shown
-                break;
         }
         std::cout << "\n";
     }
@@ -179,7 +174,6 @@ std::string VirtualMemory::getConfigString() const {
     switch (policy_) {
         case PageReplacementPolicy::FIFO: oss << "FIFO"; break;
         case PageReplacementPolicy::LRU: oss << "LRU"; break;
-        case PageReplacementPolicy::CLOCK: oss << "Clock"; break;
     }
 
     return oss.str();
@@ -231,7 +225,7 @@ Result<Address> VirtualMemory::handlePageFault(size_t page_number) {
     pte.valid = true;
     pte.frame_number = frame_number;
     pte.dirty = false;
-    pte.referenced = false;
+    pte.referenced = true;  // Set reference bit on page load
     pte.load_time = global_time_;
     pte.last_access = global_time_;
 
@@ -266,28 +260,6 @@ size_t VirtualMemory::selectVictimPage() {
                 }
             }
             return victim;
-        }
-
-        case PageReplacementPolicy::CLOCK: {
-            // Clock algorithm: circular scan with reference bit
-            while (true) {
-                auto& pte = page_table_[clock_hand_];
-
-                if (pte.valid) {
-                    if (!pte.referenced) {
-                        // Found victim
-                        size_t victim = clock_hand_;
-                        clock_hand_ = (clock_hand_ + 1) % num_virtual_pages_;
-                        return victim;
-                    } else {
-                        // Give second chance, clear reference bit
-                        pte.referenced = false;
-                    }
-                }
-
-                // Move to next page
-                clock_hand_ = (clock_hand_ + 1) % num_virtual_pages_;
-            }
         }
 
         default:

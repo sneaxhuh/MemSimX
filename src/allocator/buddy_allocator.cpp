@@ -95,7 +95,7 @@ Result<void> BuddyAllocator::deallocate(BlockId block_id) {
     // Find the block
     auto it = allocated_blocks_.find(block_id);
     if (it == allocated_blocks_.end()) {
-        return Result<void>::Err("Block ID not found");
+        return Result<void>::Err("Block ID not found (allocator may have been reset or invalid ID)");
     }
 
     BuddyBlock* block = it->second;
@@ -338,7 +338,7 @@ std::string BuddyAllocator::getStats() const {
 
     oss << "\nInternal fragmentation: " << std::fixed << std::setprecision(2)
         << getInternalFragmentation() << "%" << std::endl;
-    oss << "External fragmentation: " << std::fixed << std::setprecision(2)
+    oss << "Buddy fragmentation (unusable free): " << std::fixed << std::setprecision(2)
         << getExternalFragmentation() << "%" << std::endl;
 
     return oss.str();

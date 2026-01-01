@@ -44,6 +44,11 @@ Result<void> MemoryManager::setAllocator(AllocatorType type) {
         current_allocator_type_ = type;
 
         if (isMemoryInitialized()) {
+            // Warn user that switching allocators clears all allocations
+            if (allocator_) {
+                std::cout << "Warning: Switching allocator. All previous allocations invalidated." << std::endl;
+            }
+
             // Create appropriate allocator based on type
             if (type == AllocatorType::BUDDY) {
                 allocator_ = std::make_unique<BuddyAllocator>(
@@ -174,7 +179,6 @@ Result<void> MemoryManager::initVirtualMemory(size_t num_virtual_pages,
         switch (policy) {
             case PageReplacementPolicy::FIFO: policy_name = "FIFO"; break;
             case PageReplacementPolicy::LRU: policy_name = "LRU"; break;
-            case PageReplacementPolicy::CLOCK: policy_name = "Clock"; break;
             default: policy_name = "Unknown"; break;
         }
 

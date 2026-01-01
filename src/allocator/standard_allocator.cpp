@@ -76,7 +76,7 @@ Result<void> StandardAllocator::deallocate(BlockId block_id) {
     // Find the block
     auto it = allocated_blocks_.find(block_id);
     if (it == allocated_blocks_.end()) {
-        return Result<void>::Err("Block ID not found");
+        return Result<void>::Err("Block ID not found (allocator may have been reset or invalid ID)");
     }
 
     MemoryBlock* block = it->second;

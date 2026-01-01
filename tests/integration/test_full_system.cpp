@@ -207,7 +207,7 @@ TEST_F(FullSystemTest, FullPipeline_BuddyAllocator) {
 
     vm = std::make_unique<VirtualMemory>(
         memory.get(),
-        32, 16, 256, PageReplacementPolicy::CLOCK
+        32, 16, 256, PageReplacementPolicy::LRU
     );
 
     // Allocate with buddy system
@@ -325,7 +325,7 @@ TEST_F(FullSystemTest, Workload_RandomAccess) {
 
     vm = std::make_unique<VirtualMemory>(
         memory.get(),
-        64, 16, 256, PageReplacementPolicy::CLOCK
+        64, 16, 256, PageReplacementPolicy::LRU
     );
 
     // Pseudo-random access

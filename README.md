@@ -12,7 +12,7 @@ A comprehensive memory management simulator that models OS-level memory manageme
   - Worst Fit
   - Buddy Allocation System (power-of-two)
 - **Multilevel Cache**: L1/L2 cache with FIFO, LRU, and LFU replacement policies
-- **Virtual Memory**: Paging with FIFO, LRU, and Clock page replacement policies
+- **Virtual Memory**: Paging with FIFO and LRU page replacement policies
 - **Interactive CLI**: Command-line interface with ASCII visualization
 - **Comprehensive Testing**: Unit and integration tests with Google Test
 
@@ -174,6 +174,19 @@ All 157 tests passing.
 - **DESIGN_DOCUMENT.md**: System architecture and algorithms
 - **Inline Documentation**: Comments in headers and source files
 
+## Important Notes
+
+### Subsystem Independence
+**The allocator and virtual memory subsystems are independent and do not share state.** They operate on the same physical memory but in separate modes:
+- When using the allocator (`malloc`/`free`), memory is managed through allocation strategies
+- When using virtual memory (`vm read`/`vm write`), memory is accessed through page tables
+- These two modes cannot be used simultaneously - choose one approach per simulation session
+
+### Allocator Behavior
+- Switching allocators (e.g., `set allocator buddy`) **invalidates all previous allocations**
+- Block IDs are reset when changing allocation strategies
+- Always reinitialize or clear allocations when switching allocators
+
 ## Performance Characteristics
 
 ### Time Complexity
@@ -181,7 +194,7 @@ All 157 tests passing.
 - **Buddy Allocator**: O(log n) allocation/deallocation
 - **Cache Lookup**: O(associativity) per cache level
 - **Virtual Memory Translation**: O(1) page table lookup
-- **Page Replacement**: O(1) FIFO, O(n) LRU, O(n) Clock
+- **Page Replacement**: O(1) FIFO, O(n) LRU
 
 ### Space Complexity
 - **Physical Memory**: O(memory_size)

@@ -271,48 +271,6 @@ TEST_F(VirtualMemoryTest, LRU_UpdateOnAccess) {
     EXPECT_EQ(stats.page_hits, 4);
 }
 
-// ===== Clock Page Replacement Tests =====
-
-TEST_F(VirtualMemoryTest, Clock_PageReplacement) {
-    vm = std::make_unique<VirtualMemory>(
-        memory.get(), 10, 3, 256, PageReplacementPolicy::CLOCK
-    );
-
-    // Load 3 pages
-    vm->read(0);
-    vm->read(256);
-    vm->read(512);
-
-    // Load page 3 - should evict first page with ref bit = 0
-    vm->read(768);
-
-    auto stats = vm->getStats();
-    EXPECT_EQ(stats.page_faults, 4);
-}
-
-TEST_F(VirtualMemoryTest, Clock_SecondChance) {
-    vm = std::make_unique<VirtualMemory>(
-        memory.get(), 10, 3, 256, PageReplacementPolicy::CLOCK
-    );
-
-    // Load 3 pages (all get referenced)
-    vm->read(0);
-    vm->read(256);
-    vm->read(512);
-
-    // Access all pages again (set all reference bits)
-    vm->read(0);
-    vm->read(256);
-    vm->read(512);
-
-    // Load page 3 - clock will give second chances, clear ref bits
-    // Eventually evict the first one it encounters with cleared bit
-    vm->read(768);
-
-    auto stats = vm->getStats();
-    EXPECT_GT(stats.page_faults, 0);
-}
-
 // ===== Flush Tests =====
 
 TEST_F(VirtualMemoryTest, Flush) {
