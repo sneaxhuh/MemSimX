@@ -6,6 +6,7 @@ add_library(memsim_lib STATIC
     cache/cache_level.cpp
     cache/cache_hierarchy.cpp
     virtual_memory/virtual_memory.cpp
+    system/memory_system.cpp
     manager/memory_manager.cpp
     cli/command_parser.cpp
     cli/cli.cpp
