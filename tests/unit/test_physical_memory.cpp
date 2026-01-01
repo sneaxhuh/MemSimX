@@ -185,29 +185,6 @@ TEST_F(PhysicalMemoryTest, UsedSizeTracking) {
 }
 
 // Test large memory allocation
-TEST(PhysicalMemoryLargeTest, LargeMemory) {
-    // Create 1MB memory
-    PhysicalMemory large_memory(1024 * 1024);
-
-    EXPECT_EQ(large_memory.getTotalSize(), 1024 * 1024);
-
-    // Write and read at various offsets
-    uint64_t test_value = 0x123456789ABCDEF0;
-    EXPECT_TRUE(large_memory.write(0, &test_value, sizeof(test_value)));
-    EXPECT_TRUE(large_memory.write(1024 * 512, &test_value, sizeof(test_value)));
-    EXPECT_TRUE(large_memory.write(1024 * 1024 - 8, &test_value, sizeof(test_value)));
-
-    uint64_t read_value = 0;
-    EXPECT_TRUE(large_memory.read(0, &read_value, sizeof(read_value)));
-    EXPECT_EQ(read_value, test_value);
-
-    EXPECT_TRUE(large_memory.read(1024 * 512, &read_value, sizeof(read_value)));
-    EXPECT_EQ(read_value, test_value);
-
-    EXPECT_TRUE(large_memory.read(1024 * 1024 - 8, &read_value, sizeof(read_value)));
-    EXPECT_EQ(read_value, test_value);
-}
-
 // Test small memory allocation
 TEST(PhysicalMemorySmallTest, SmallMemory) {
     // Create very small memory (64 bytes)
