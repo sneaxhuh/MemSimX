@@ -135,19 +135,6 @@ Utilization: 19.53%
 - **`help`** - Display help
 - **`exit`** - Exit simulator
 
-## Project Statistics
-
-- **Total Lines of Code**: ~6,650 lines
-- **Source Files**: 10 implementation files
-- **Header Files**: 53 header files
-- **Test Files**: 7 test files
-- **Total Tests**: 157 (all passing)
-  - Unit Tests: 126
-  - Integration Tests: 31
-- **Test Coverage**: All components tested
-- **Build System**: CMake with C++17
-- **Testing Framework**: Google Test
-
 ## Testing
 
 ### Run All Tests
