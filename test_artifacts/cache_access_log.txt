@@ -1,0 +1,57 @@
+
+╔════════════════════════════════════════════════════════╗
+║     Memory Management Simulator v1.0                   ║
+║                                                        ║
+║  A comprehensive OS memory management simulator        ║
+║  featuring multiple allocation strategies and          ║
+║  detailed performance metrics.                         ║
+╚════════════════════════════════════════════════════════╝
+
+Type 'help' for available commands.
+
+> Memory initialized: 8192 bytes
+> Cache hierarchy initialized:
+  L1: 8 sets, 2-way, 64 bytes/block, LRU
+  L2: 16 sets, 4-way, 64 bytes/block, LRU
+> Wrote 0x0a to cache address 0x0
+> Wrote 0x14 to cache address 0x40
+> Wrote 0x1e to cache address 0x80
+> Wrote 0x28 to cache address 0xc0
+> Read from cache address 0x0: 0x0a (10)
+> Read from cache address 0x40: 0x14 (20)
+> Read from cache address 0x80: 0x1e (30)
+> Read from cache address 0xc0: 0x28 (40)
+> Read from cache address 0x100: 0x00 (0)
+> Read from cache address 0x140: 0x00 (0)
+> Read from cache address 0x180: 0x00 (0)
+> Read from cache address 0x1c0: 0x00 (0)
+> Read from cache address 0x200: 0x00 (0)
+> Read from cache address 0x0: 0x0a (10)
+> Read from cache address 0x40: 0x14 (20)
+> Read from cache address 0x80: 0x1e (30)
+> === Cache Hierarchy Statistics ===
+
+=== L1 Cache Statistics ===
+Configuration: 8 sets, 2-way, 64 bytes/block, LRU
+Hits: 3
+Misses: 9
+Total Accesses: 12
+Hit Ratio: 25.00%
+Miss Ratio: 75.00%
+
+=== L2 Cache Statistics ===
+Configuration: 16 sets, 4-way, 64 bytes/block, LRU
+Hits: 0
+Misses: 9
+Total Accesses: 9
+Hit Ratio: 0.00%
+Miss Ratio: 100.00%
+
+=== Overall Statistics ===
+Total Accesses: 21
+L1 Hits: 3
+L2 Hits: 0
+Memory Accesses: 9
+Overall Hit Ratio: 14.29%
+> 
+Goodbye!
