@@ -81,6 +81,13 @@ public:
      * @return AllocatorType enum value
      */
     virtual AllocatorType getType() const = 0;
+
+    /**
+     * @brief Get the starting address of an allocated block
+     * @param block_id The ID of the block
+     * @return Result containing the address on success, or error message on failure
+     */
+    virtual Result<Address> getBlockAddress(BlockId block_id) const = 0;
 };
 
 } // namespace memsim

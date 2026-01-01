@@ -72,6 +72,7 @@ public:
     double getExternalFragmentation() const override;
     double getUtilization() const override;
     AllocatorType getType() const override { return AllocatorType::BUDDY; }
+    Result<Address> getBlockAddress(BlockId block_id) const override;
 
 private:
     PhysicalMemory* physical_memory_;

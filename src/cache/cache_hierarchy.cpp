@@ -79,7 +79,7 @@ HierarchyStats CacheHierarchy::getStats() const {
     HierarchyStats stats;
     stats.l1_stats = l1_cache_->getStats();
     stats.l2_stats = l2_cache_->getStats();
-    stats.total_accesses = stats.l1_stats.accesses;
+    stats.total_accesses = stats.l1_stats.accesses + stats.l2_stats.accesses;
     stats.memory_accesses = memory_access_count_;
     return stats;
 }
@@ -112,6 +112,14 @@ void CacheHierarchy::dump() const {
     l1_cache_->dump();
     std::cout << "\n";
     l2_cache_->dump();
+}
+
+bool CacheHierarchy::containsInL1(Address address) const {
+    return l1_cache_->contains(address);
+}
+
+bool CacheHierarchy::containsInL2(Address address) const {
+    return l2_cache_->contains(address);
 }
 
 } // namespace memsim

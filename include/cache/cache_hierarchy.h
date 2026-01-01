@@ -113,6 +113,16 @@ public:
      */
     CacheLevel* getL2() { return l2_cache_.get(); }
 
+    /**
+     * @brief Check if address is in L1 cache
+     */
+    bool containsInL1(Address address) const;
+
+    /**
+     * @brief Check if address is in L2 cache
+     */
+    bool containsInL2(Address address) const;
+
 private:
     PhysicalMemory* memory_;
     std::unique_ptr<CacheLevel> l1_cache_;

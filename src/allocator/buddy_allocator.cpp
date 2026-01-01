@@ -92,8 +92,6 @@ Result<BlockId> BuddyAllocator::allocate(size_t size) {
 }
 
 Result<void> BuddyAllocator::deallocate(BlockId block_id) {
-    total_deallocations_++;
-
     // Find the block
     auto it = allocated_blocks_.find(block_id);
     if (it == allocated_blocks_.end()) {
@@ -122,6 +120,7 @@ Result<void> BuddyAllocator::deallocate(BlockId block_id) {
     }
     physical_memory_->updateUsedSize(total_used);
 
+    total_deallocations_++;
     return Result<void>::Ok();
 }
 
@@ -407,6 +406,14 @@ size_t BuddyAllocator::getLargestFreeBlock() const {
         }
     }
     return largest;
+}
+
+Result<Address> BuddyAllocator::getBlockAddress(BlockId block_id) const {
+    auto it = allocated_blocks_.find(block_id);
+    if (it == allocated_blocks_.end()) {
+        return Result<Address>::Err("Block ID not found");
+    }
+    return Result<Address>::Ok(it->second->start_address);
 }
 
 } // namespace memsim
