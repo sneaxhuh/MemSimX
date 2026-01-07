@@ -1,0 +1,65 @@
+
+╔════════════════════════════════════════════════════════╗
+║     Memory Management Simulator v1.0                   ║
+║                                                        ║
+║  An OS memory management simulator with allocation     ║
+║  strategies, caching, and virtual memory.              ║
+║                                                        ║
+╚════════════════════════════════════════════════════════╝
+
+Type 'help' for available commands.
+
+> Memory initialized: 4096 bytes
+> Cache hierarchy initialized:
+  L1: 4 sets, 2-way, 16 bytes/block, LRU
+  L2: 8 sets, 4-way, 32 bytes/block, LRU
+> Wrote 0x64 to cache address 0x0
+> Wrote 0xc8 to cache address 0x10
+> Wrote 0x32 to cache address 0x20
+> Read from cache address 0x0: 0x64 (100)
+> Read from cache address 0x10: 0xc8 (200)
+> Read from cache address 0x20: 0x32 (50)
+> Read from cache address 0x64: 0x00 (0)
+> Read from cache address 0xc8: 0x00 (0)
+> === Cache Hierarchy Statistics ===
+
+=== L1 Cache Statistics ===
+Configuration: 4 sets, 2-way, 16 bytes/block, LRU
+Hits: 0
+Misses: 5
+Total Accesses: 5
+Hit Ratio: 0.00%
+Miss Ratio: 100.00%
+
+=== L2 Cache Statistics ===
+Configuration: 8 sets, 4-way, 32 bytes/block, LRU
+Hits: 1
+Misses: 4
+Total Accesses: 5
+Hit Ratio: 20.00%
+Miss Ratio: 80.00%
+
+=== Overall Statistics ===
+Total Accesses: 10
+L1 Hits: 0
+L2 Hits: 1
+Memory Accesses: 4
+Overall Hit Ratio: 10.00%
+> === L1 Cache Contents ===
+4 sets, 2-way, 16 bytes/block, LRU
+
+Set 0: [V:1 Tag:0x0000 LastUse:1] [V:1 Tag:0x0003 LastUse:5] 
+Set 1: [V:1 Tag:0x0000 LastUse:2] [V:0 Tag:----] 
+Set 2: [V:1 Tag:0x0000 LastUse:3] [V:1 Tag:0x0001 LastUse:4] 
+
+
+=== L2 Cache Contents ===
+8 sets, 4-way, 32 bytes/block, LRU
+
+Set 0: [V:1 Tag:0x0000 LastUse:2] [V:0 Tag:----] [V:0 Tag:----] [V:0 Tag:----] 
+Set 1: [V:1 Tag:0x0000 LastUse:3] [V:0 Tag:----] [V:0 Tag:----] [V:0 Tag:----] 
+Set 3: [V:1 Tag:0x0000 LastUse:4] [V:0 Tag:----] [V:0 Tag:----] [V:0 Tag:----] 
+Set 6: [V:1 Tag:0x0000 LastUse:5] [V:0 Tag:----] [V:0 Tag:----] [V:0 Tag:----] 
+
+> 
+Goodbye!

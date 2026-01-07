@@ -1,0 +1,64 @@
+
+╔════════════════════════════════════════════════════════╗
+║     Memory Management Simulator v1.0                   ║
+║                                                        ║
+║  An OS memory management simulator with allocation     ║
+║  strategies, caching, and virtual memory.              ║
+║                                                        ║
+╚════════════════════════════════════════════════════════╝
+
+Type 'help' for available commands.
+
+> Memory initialized: 2048 bytes
+> Warning: Switching allocator. All previous allocations invalidated.
+Allocator set to: First Fit
+> Allocated block id=1 at address=0x0000
+> Allocated block id=2 at address=0x00c8
+> Allocated block id=3 at address=0x01f4
+> Allocated block id=4 at address=0x0384
+> 
+=== Memory Layout (2048 bytes) ===
+[0x0000 - 0x00c7] USED (id=1, 200 bytes)
+[0x00c8 - 0x01f3] USED (id=2, 300 bytes)
+[0x01f4 - 0x0383] USED (id=3, 400 bytes)
+[0x0384 - 0x03e7] USED (id=4, 100 bytes)
+[0x03e8 - 0x07ff] FREE (1048 bytes)
+
+> Block 2 freed
+> 
+=== Memory Layout (2048 bytes) ===
+[0x0000 - 0x00c7] USED (id=1, 200 bytes)
+[0x00c8 - 0x01f3] FREE (300 bytes)
+[0x01f4 - 0x0383] USED (id=3, 400 bytes)
+[0x0384 - 0x03e7] USED (id=4, 100 bytes)
+[0x03e8 - 0x07ff] FREE (1048 bytes)
+
+> Block 3 freed
+> 
+=== Memory Layout (2048 bytes) ===
+[0x0000 - 0x00c7] USED (id=1, 200 bytes)
+[0x00c8 - 0x0383] FREE (700 bytes)
+[0x0384 - 0x03e7] USED (id=4, 100 bytes)
+[0x03e8 - 0x07ff] FREE (1048 bytes)
+
+> 
+=== Allocator Statistics ===
+Strategy: First Fit
+Total memory: 2048 bytes
+Used memory: 300 bytes
+Free memory: 1748 bytes
+Utilization: 14.65%
+
+Allocated blocks: 2
+Free blocks: 2
+Largest free block: 1048 bytes
+
+Total allocations: 4
+Failed allocations: 0
+Total deallocations: 2
+Success rate: 100.00%
+
+Internal fragmentation: 0.00%
+External fragmentation: 40.05%
+> 
+Goodbye!

@@ -1,0 +1,39 @@
+
+╔════════════════════════════════════════════════════════╗
+║     Memory Management Simulator v1.0                   ║
+║                                                        ║
+║  An OS memory management simulator with allocation     ║
+║  strategies, caching, and virtual memory.              ║
+║                                                        ║
+╚════════════════════════════════════════════════════════╝
+
+Type 'help' for available commands.
+
+> Memory initialized: 2048 bytes
+> Virtual memory initialized: 16 virtual pages, 4 physical frames, 128 bytes/page, LRU policy
+> Wrote 0x2a to virtual address 0x0
+> Wrote 0x63 to virtual address 0x80
+> Wrote 0x4d to virtual address 0x100
+> Wrote 0x58 to virtual address 0x180
+> Wrote 0x37 to virtual address 0x200
+> Read from virtual address 0x0: 0x00 (0)
+> Read from virtual address 0x80: 0x80 (128)
+> Virtual address 0x0 -> Physical address 0x80
+> Virtual address 0x100 -> Physical address 0x180
+> === Virtual Memory Statistics ===
+Configuration: 16 virtual pages, 4 physical frames, 128 bytes/page, LRU
+Page Faults: 8
+Page Hits: 1
+Total Accesses: 9
+Page Fault Rate: 88.89%
+Page Hit Rate: 11.11%
+> === Page Table ===
+16 virtual pages, 4 physical frames, 128 bytes/page, LRU
+
+Page 0000: Valid=1, Frame=0001, Dirty=0, Ref=1, LastAccess=8
+Page 0001: Valid=1, Frame=0002, Dirty=0, Ref=1, LastAccess=7
+Page 0002: Valid=1, Frame=0003, Dirty=0, Ref=1, LastAccess=9
+Page 0004: Valid=1, Frame=0000, Dirty=1, Ref=1, LastAccess=5
+
+> 
+Goodbye!

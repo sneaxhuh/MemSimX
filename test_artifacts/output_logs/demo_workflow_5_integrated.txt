@@ -1,0 +1,96 @@
+
+╔════════════════════════════════════════════════════════╗
+║     Memory Management Simulator v1.0                   ║
+║                                                        ║
+║  An OS memory management simulator with allocation     ║
+║  strategies, caching, and virtual memory.              ║
+║                                                        ║
+╚════════════════════════════════════════════════════════╝
+
+Type 'help' for available commands.
+
+> Memory initialized: 8192 bytes
+> Warning: Switching allocator. All previous allocations invalidated.
+Allocator set to: Buddy Allocation
+> Cache hierarchy initialized:
+  L1: 8 sets, 4-way, 32 bytes/block, LRU
+  L2: 16 sets, 8-way, 64 bytes/block, LRU
+> Virtual memory initialized: 32 virtual pages, 8 physical frames, 256 bytes/page, LRU policy
+> Allocated block id=1 at address=0x0000
+> Allocated block id=2 at address=0x0200
+> Wrote 0x64 to virtual address 0x0
+> Wrote 0xc8 to virtual address 0x100
+> Wrote 0x96 to virtual address 0x200
+> Read from cache address 0x0: 0x64 (100)
+> Read from virtual address 0x100: 0xc8 (200)
+> Read from cache address 0x200: 0x96 (150)
+> 
+=== Buddy Allocator Statistics ===
+Strategy: Buddy Allocation (Power-of-Two)
+Min block size: 32 bytes
+Max block size: 8192 bytes
+
+Total memory: 8192 bytes
+Used memory: 768 bytes
+Free memory: 7424 bytes
+Utilization: 9.38%
+
+Allocated blocks: 2
+Free blocks: 4
+Largest free block: 4096 bytes
+
+Total allocations: 2
+Failed allocations: 0
+Total deallocations: 0
+Success rate: 100.00%
+
+Internal fragmentation: 0.00%
+Buddy fragmentation (unusable free): 44.83%
+> === Cache Hierarchy Statistics ===
+
+=== L1 Cache Statistics ===
+Configuration: 8 sets, 4-way, 32 bytes/block, LRU
+Hits: 0
+Misses: 2
+Total Accesses: 2
+Hit Ratio: 0.00%
+Miss Ratio: 100.00%
+
+=== L2 Cache Statistics ===
+Configuration: 16 sets, 8-way, 64 bytes/block, LRU
+Hits: 0
+Misses: 2
+Total Accesses: 2
+Hit Ratio: 0.00%
+Miss Ratio: 100.00%
+
+=== Overall Statistics ===
+Total Accesses: 4
+L1 Hits: 0
+L2 Hits: 0
+Memory Accesses: 2
+Overall Hit Ratio: 0.00%
+> === Virtual Memory Statistics ===
+Configuration: 32 virtual pages, 8 physical frames, 256 bytes/page, LRU
+Page Faults: 3
+Page Hits: 1
+Total Accesses: 4
+Page Fault Rate: 75.00%
+Page Hit Rate: 25.00%
+> 
+=== Buddy Memory Layout (8192 bytes) ===
+Min block size: 32 bytes
+Max block size: 8192 bytes
+
+Free Lists:
+  Size 256: 1 block(s)
+  Size 1024: 1 block(s)
+  Size 2048: 1 block(s)
+  Size 4096: 1 block(s)
+
+Allocated Blocks:
+  [0x0200 - 0x03ff] id=2, size=512 bytes
+  [0x0000 - 0x00ff] id=1, size=256 bytes
+
+> 
+Goodbye!

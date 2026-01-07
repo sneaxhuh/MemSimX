@@ -1,0 +1,81 @@
+
+╔════════════════════════════════════════════════════════╗
+║     Memory Management Simulator v1.0                   ║
+║                                                        ║
+║  An OS memory management simulator with allocation     ║
+║  strategies, caching, and virtual memory.              ║
+║                                                        ║
+╚════════════════════════════════════════════════════════╝
+
+Type 'help' for available commands.
+
+> Memory initialized: 2048 bytes
+> Warning: Switching allocator. All previous allocations invalidated.
+Allocator set to: First Fit
+> Allocated block id=1 at address=0x0000
+> Allocated block id=2 at address=0x0100
+> Allocated block id=3 at address=0x0300
+> 
+=== Memory Layout (2048 bytes) ===
+[0x0000 - 0x00ff] USED (id=1, 256 bytes)
+[0x0100 - 0x02ff] USED (id=2, 512 bytes)
+[0x0300 - 0x037f] USED (id=3, 128 bytes)
+[0x0380 - 0x07ff] FREE (1152 bytes)
+
+> 
+=== Allocator Statistics ===
+Strategy: First Fit
+Total memory: 2048 bytes
+Used memory: 896 bytes
+Free memory: 1152 bytes
+Utilization: 43.75%
+
+Allocated blocks: 3
+Free blocks: 1
+Largest free block: 1152 bytes
+
+Total allocations: 3
+Failed allocations: 0
+Total deallocations: 0
+Success rate: 100.00%
+
+Internal fragmentation: 0.00%
+External fragmentation: 0.00%
+> Block 2 freed
+> 
+=== Memory Layout (2048 bytes) ===
+[0x0000 - 0x00ff] USED (id=1, 256 bytes)
+[0x0100 - 0x02ff] FREE (512 bytes)
+[0x0300 - 0x037f] USED (id=3, 128 bytes)
+[0x0380 - 0x07ff] FREE (1152 bytes)
+
+> Allocated block id=4 at address=0x0100
+> 
+=== Memory Layout (2048 bytes) ===
+[0x0000 - 0x00ff] USED (id=1, 256 bytes)
+[0x0100 - 0x022b] USED (id=4, 300 bytes)
+[0x022c - 0x02ff] FREE (212 bytes)
+[0x0300 - 0x037f] USED (id=3, 128 bytes)
+[0x0380 - 0x07ff] FREE (1152 bytes)
+
+> 
+=== Allocator Statistics ===
+Strategy: First Fit
+Total memory: 2048 bytes
+Used memory: 684 bytes
+Free memory: 1364 bytes
+Utilization: 33.40%
+
+Allocated blocks: 3
+Free blocks: 2
+Largest free block: 1152 bytes
+
+Total allocations: 4
+Failed allocations: 0
+Total deallocations: 1
+Success rate: 100.00%
+
+Internal fragmentation: 0.00%
+External fragmentation: 15.54%
+> 
+Goodbye!

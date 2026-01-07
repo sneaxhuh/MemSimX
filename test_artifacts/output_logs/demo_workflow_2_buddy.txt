@@ -1,0 +1,92 @@
+
+╔════════════════════════════════════════════════════════╗
+║     Memory Management Simulator v1.0                   ║
+║                                                        ║
+║  An OS memory management simulator with allocation     ║
+║  strategies, caching, and virtual memory.              ║
+║                                                        ║
+╚════════════════════════════════════════════════════════╝
+
+Type 'help' for available commands.
+
+> Memory initialized: 1024 bytes
+> Warning: Switching allocator. All previous allocations invalidated.
+Allocator set to: Buddy Allocation
+> Allocated block id=1 at address=0x0000
+> Allocated block id=2 at address=0x0080
+> Allocated block id=3 at address=0x0100
+> 
+=== Buddy Memory Layout (1024 bytes) ===
+Min block size: 32 bytes
+Max block size: 1024 bytes
+
+Free Lists:
+  Size 64: 1 block(s)
+  Size 512: 1 block(s)
+
+Allocated Blocks:
+  [0x0100 - 0x01ff] id=3, size=256 bytes
+  [0x0080 - 0x00ff] id=2, size=128 bytes
+  [0x0000 - 0x003f] id=1, size=64 bytes
+
+> 
+=== Buddy Allocator Statistics ===
+Strategy: Buddy Allocation (Power-of-Two)
+Min block size: 32 bytes
+Max block size: 1024 bytes
+
+Total memory: 1024 bytes
+Used memory: 448 bytes
+Free memory: 576 bytes
+Utilization: 43.75%
+
+Allocated blocks: 3
+Free blocks: 2
+Largest free block: 512 bytes
+
+Total allocations: 3
+Failed allocations: 0
+Total deallocations: 0
+Success rate: 100.00%
+
+Internal fragmentation: 21.88%
+Buddy fragmentation (unusable free): 11.11%
+> Block 2 freed
+> 
+=== Buddy Memory Layout (1024 bytes) ===
+Min block size: 32 bytes
+Max block size: 1024 bytes
+
+Free Lists:
+  Size 64: 1 block(s)
+  Size 128: 1 block(s)
+  Size 512: 1 block(s)
+
+Allocated Blocks:
+  [0x0100 - 0x01ff] id=3, size=256 bytes
+  [0x0000 - 0x003f] id=1, size=64 bytes
+
+> 
+=== Buddy Allocator Statistics ===
+Strategy: Buddy Allocation (Power-of-Two)
+Min block size: 32 bytes
+Max block size: 1024 bytes
+
+Total memory: 1024 bytes
+Used memory: 320 bytes
+Free memory: 704 bytes
+Utilization: 31.25%
+
+Allocated blocks: 2
+Free blocks: 3
+Largest free block: 512 bytes
+
+Total allocations: 3
+Failed allocations: 0
+Total deallocations: 1
+Success rate: 100.00%
+
+Internal fragmentation: 21.88%
+Buddy fragmentation (unusable free): 27.27%
+> 
+Goodbye!

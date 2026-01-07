@@ -1,0 +1,45 @@
+
+╔════════════════════════════════════════════════════════╗
+║     Memory Management Simulator v1.0                   ║
+║                                                        ║
+║  An OS memory management simulator with allocation     ║
+║  strategies, caching, and virtual memory.              ║
+║                                                        ║
+╚════════════════════════════════════════════════════════╝
+
+Type 'help' for available commands.
+
+> Memory initialized: 2048 bytes
+> Virtual memory initialized: 16 virtual pages, 4 physical frames, 256 bytes/page, FIFO policy
+> Wrote 0x0a to virtual address 0x0
+> Wrote 0x14 to virtual address 0x100
+> Wrote 0x1e to virtual address 0x200
+> Wrote 0x28 to virtual address 0x300
+> Wrote 0x32 to virtual address 0x400
+> Wrote 0x3c to virtual address 0x500
+> === Virtual Memory Statistics ===
+Configuration: 16 virtual pages, 4 physical frames, 256 bytes/page, FIFO
+Page Faults: 6
+Page Hits: 0
+Total Accesses: 6
+Page Fault Rate: 100.00%
+Page Hit Rate: 0.00%
+> Read from virtual address 0x0: 0x00 (0)
+> Read from virtual address 0x100: 0x00 (0)
+> === Virtual Memory Statistics ===
+Configuration: 16 virtual pages, 4 physical frames, 256 bytes/page, FIFO
+Page Faults: 8
+Page Hits: 0
+Total Accesses: 8
+Page Fault Rate: 100.00%
+Page Hit Rate: 0.00%
+> === Page Table ===
+16 virtual pages, 4 physical frames, 256 bytes/page, FIFO
+
+Page 0000: Valid=1, Frame=0002, Dirty=0, Ref=1, LoadTime=7
+Page 0001: Valid=1, Frame=0003, Dirty=0, Ref=1, LoadTime=8
+Page 0004: Valid=1, Frame=0000, Dirty=1, Ref=1, LoadTime=5
+Page 0005: Valid=1, Frame=0001, Dirty=1, Ref=1, LoadTime=6
+
+> 
+Goodbye!
