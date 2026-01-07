@@ -1,0 +1,13 @@
+init memory 2048
+set allocator first_fit
+malloc 256
+malloc 512
+malloc 128
+dump memory
+stats
+free 2
+dump memory
+malloc 300
+dump memory
+stats
+exit

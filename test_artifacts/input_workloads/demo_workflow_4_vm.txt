@@ -1,0 +1,14 @@
+init memory 2048
+init vm 16 4 128 lru
+vm write 0 42
+vm write 128 99
+vm write 256 77
+vm write 384 88
+vm write 512 55
+vm read 0
+vm read 128
+vm translate 0
+vm translate 256
+vm stats
+vm dump
+exit

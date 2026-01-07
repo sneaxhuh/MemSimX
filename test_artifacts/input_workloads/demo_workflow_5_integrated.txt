@@ -1,0 +1,17 @@
+init memory 8192
+set allocator buddy
+init cache 8 4 32 lru 16 8 64 lru
+init vm 32 8 256 lru
+malloc 256
+malloc 512
+vm write 0 100
+vm write 256 200
+vm write 512 150
+cache read 0
+vm read 256
+cache read 512
+stats
+cache stats
+vm stats
+dump memory
+exit

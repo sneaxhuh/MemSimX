@@ -1,0 +1,14 @@
+init memory 2048
+init vm 16 4 256 fifo
+vm write 0 10
+vm write 256 20
+vm write 512 30
+vm write 768 40
+vm write 1024 50
+vm write 1280 60
+vm stats
+vm read 0
+vm read 256
+vm stats
+vm dump
+exit

@@ -1,0 +1,13 @@
+init memory 4096
+init cache 4 2 16 lru 8 4 32 lru
+cache write 0 100
+cache write 16 200
+cache write 32 50
+cache read 0
+cache read 16
+cache read 32
+cache read 100
+cache read 200
+cache stats
+cache dump
+exit
