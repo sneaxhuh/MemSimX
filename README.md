@@ -52,34 +52,6 @@ cmake .. -DCMAKE_BUILD_TYPE=Debug
 cmake --build .
 ```
 
-## Project Structure
-
-```
-memory-simulator/
-├── CMakeLists.txt           # Root build configuration
-├── README.md                # This file
-├── src/                     # Source files
-│   ├── memory/              # Physical memory implementation
-│   ├── allocator/           # Allocation algorithms
-│   ├── cache/               # Cache hierarchy
-│   ├── virtual_memory/      # Virtual memory and paging
-│   ├── manager/             # Memory manager (orchestrator)
-│   └── cli/                 # Command-line interface
-├── include/                 # Header files
-│   ├── common/              # Common types and utilities
-│   ├── memory/
-│   ├── allocator/
-│   ├── cache/
-│   ├── virtual_memory/
-│   ├── manager/
-│   └── cli/
-├── tests/                   # Test files
-│   ├── unit/                # Unit tests
-│   ├── integration/         # Integration tests
-│   ├── workloads/           # Test workloads
-│   └── scripts/             # Test scripts
-└── docs/                    # Documentation
-```
 
 ## Usage
 
@@ -123,27 +95,79 @@ Utilization: 19.53%
 ...
 ```
 
-### Available Commands
+### 📘 Available Commands
 
-- **`init memory <size>`** - Initialize physical memory
-- **`set allocator <type>`** - Set allocation strategy (first_fit, best_fit, worst_fit, buddy)
-- **`malloc <size>`** - Allocate memory block
-- **`free <block_id>`** - Free block by ID
-- **`free_addr <address>`** - Free block by address
-- **`dump memory`** - Display memory layout
-- **`stats`** - Show detailed statistics
-- **`help`** - Display help
-- **`exit`** - Exit simulator
+#### 🧠 Memory Management
+- **`init memory <size>`** – Initialize physical memory with the specified size (in bytes)  
+  _Example:_ `init memory 1024`
 
-## Project Statistics
+---
 
-- **Source Files**: 10 implementation files
-- **Header Files**: 53 header files
-- **Test Files**: 7 test files
-- **Total Tests**: 154 (all passing)
-- **Test Coverage**: All components tested
-- **Build System**: CMake with C++17
-- **Testing Framework**: Google Test
+#### 🧩 Allocator Configuration
+- **`set allocator <type>`** – Set the memory allocation strategy  
+  _Types:_ `first_fit`, `best_fit`, `worst_fit`, `buddy`  
+  _Example:_ `set allocator first_fit`  
+  _Note:_ Buddy allocator rounds allocations to powers of two and coalesces free buddies automatically
+
+---
+
+#### 📦 Memory Operations
+- **`malloc <size>`** – Allocate a memory block of the given size  
+  _Example:_ `malloc 100`
+
+- **`free <block_id>`** – Deallocate a memory block by block ID  
+  _Example:_ `free 1`
+
+- **`free_addr <physical_address>`** – Deallocate a memory block by physical address  
+  _Example:_ `free_addr 0`
+
+---
+
+#### 🧮 Cache Hierarchy
+- **`init cache <l1_s> <l1_a> <l1_b> <l1_p> <l2_s> <l2_a> <l2_b> <l2_p>`** – Initialize L1/L2 cache hierarchy  
+  _Example:_ `init cache 4 2 16 lru 8 4 32 lru`
+
+- **`cache read <address>`** – Read from cache using physical address  
+  _Example:_ `cache read 1024`
+
+- **`cache write <address> <value>`** – Write to cache (write-through)  
+  _Example:_ `cache write 1024 42`
+
+- **`cache stats`** – Show cache hit/miss statistics  
+- **`cache dump`** – Display cache contents  
+- **`cache flush`** – Invalidate all cache lines
+
+---
+
+#### 🧾 Virtual Memory
+- **`init vm <vp> <pf> <ps> <policy>`** – Initialize virtual memory system  
+  _Example:_ `init vm 16 4 256 lru`
+
+- **`vm read <virtual_address>`** – Read from virtual address  
+  _Example:_ `vm read 1024`
+
+- **`vm write <virtual_address> <value>`** – Write to virtual address  
+  _Example:_ `vm write 1024 42`
+
+- **`vm translate <virtual_address>`** – Translate virtual to physical address  
+  _Example:_ `vm translate 1024`
+
+- **`vm stats`** – Show virtual memory statistics  
+- **`vm dump`** – Display page table
+
+---
+
+#### 📊 Visualization & Statistics
+- **`dump memory`** – Display memory layout  
+- **`stats`** – Show allocator statistics (strategy, fragmentation, utilization)
+
+---
+
+#### ⚙️ General
+- **`help`** – Display help  
+- **`exit`** – Exit the simulator
+
+
 
 ## Testing
 
@@ -165,11 +189,6 @@ ctest --output-on-failure
 ### Test Coverage
 All 154 tests passing.
 
-## Documentation
-
-- **README.md**: Project overview and quick start
-- **DESIGN_DOCUMENT.md**: System architecture and algorithms
-- **Inline Documentation**: Comments in headers and source files
 
 ## Important Notes
 
